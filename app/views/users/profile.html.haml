@@ -1,0 +1,20 @@
+- breadcrumb :profiles
+= content_for(:html_title) { 'プロフィール - Fmarket' }
+= render 'shared/header'
+= render 'shared/breadcrumb'
+%main.profile
+  .container
+    %article.content
+      = form_with model: @user, local: true do |f|
+        .title
+          %h2 プロフィール
+        .self
+          .self__icon
+          = f.text_field :nickname, class:'self__nickname', placeholder: '例)AYA☆セール中'
+        .message-form
+          = f.text_area :profile_content, class:'message-form__profile', placeholder: '例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪'
+          = f.submit '変更する', id:'submit-btn', class:'message-form__update-btn'
+    %nav= render 'shared/mypage_side'
+%nav= render 'shared/sellbutton'
+%aside= render 'shared/footertop'
+%footer= render 'shared/footer'

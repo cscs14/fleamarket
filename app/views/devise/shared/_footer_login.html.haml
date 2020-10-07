@@ -1,0 +1,13 @@
+.footer-login
+  %ul.footer-login__navi
+    %li 
+      = link_to "プライバシーポリシー"  ,'#'
+    %li
+      = link_to "フリマ利用規約" ,'#'
+    %lI  
+      = link_to "特定商取引に関する表記" ,'#' 
+    
+  .footer-login__mercari-logo
+    =link_to root_path, class: "login-footer--link" do
+      = image_tag ("logo_gray.svg")
+    %small © Fmarket, Inc.

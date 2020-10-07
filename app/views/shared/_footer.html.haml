@@ -1,0 +1,64 @@
+.footer
+  .topbox
+    .box
+      .title
+        %h2.atitle フリマについて
+      .menubox
+        .menu
+          %li.list 会社概要（運営会社）
+          %li.list 採用情報
+          %li.list プレスリリース
+          %li.list 公式ブログ
+          %li.list フリマロゴ利用ガイドライン
+          = link_to('https://twitter.com/mercari_jp', class: "link") do
+            %i.fab.fa-twitter
+          = link_to('https://www.facebook.com/mercarijp', class: "link") do
+            %i.fab.fa-facebook-square
+    .box
+      .title
+        %h2.atitle ヘルプ＆ガイド
+      .menubox
+        .menu
+          %li.list フリマガイド
+          %li.list らくらくフリマ便
+          %li.list ゆうゆうフリマ便
+          %li.list 大型フリマ便
+          %li.list 車体取引ガイド
+          %li.list フリマあんしん・あんぜん宣言！
+          %li.list 偽ブランド品撲滅への取り組み
+          %li.list フリマボックス
+    .box
+      .title
+        %h2.atitle プライバシーと利用規約
+      .menubox
+        .smallbox
+          .menu
+            %li.list プライバシーポリシー
+            %li.list フリマ利用規約
+            %li.list
+              あんしんスマホサポート制度に関
+              %br
+              する利用特約
+            %li.list コンプライアンスポリシー
+        .smallbox
+          .menu
+            %li.list
+              個人データの安全管理に係る基本
+              %br
+              方針
+            %li.list 特定商取引に関する表記
+            %li.list 資金決済法に基づく表示
+            %li.list 法令順守と犯罪抑止のために
+    .box
+      .title
+        %h2.atitle 国
+      .menubox
+        .menu
+          %li.list 日本
+          %li.list United States
+  .bottombox
+    .logo
+      = link_to root_path do
+        =image_tag "fmarket_logo_red.svg", size: '180x60', class: 'logo-a'
+    .corporatemark
+      %li.acorporatemark © 2019 Fmarket

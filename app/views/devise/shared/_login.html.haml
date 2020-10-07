@@ -1,0 +1,25 @@
+.login-main
+  .login-main__top
+    ="アカウントをお持ちでない方はこちら"
+    = link_to new_user_registration_path,method: :get  do
+      新規会員登録
+  .login-main__middle
+    = link_to user_facebook_omniauth_authorize_path, method: :post do
+      .btn-sns.btn-sns__facebook
+        =icon('fab', 'facebook',class:"icon--facebook")
+        = "Facebookでログイン"
+    = link_to user_google_oauth2_omniauth_authorize_path, method: :post do
+      .btn-sns.btn-sns__google
+        =icon('fab', 'google',class:"icon--google")
+        = "Googleでログイン"
+  .login-main__under
+    .form__field      
+      = form_with model: @user, url: new_user_session_path , local: true do |f|
+        .form__field--input__email
+          = f.text_field :email ,placeholder: "メールアドレス"
+        .form__field--input__password
+          = f.password_field :password ,placeholder:"パスワード"      
+        .login-submit
+          = f.submit 'ログイン' , class:'form__field--login btn-sns'
+        .form__field--forget
+          = link_to "パスワードお忘れの方" ''

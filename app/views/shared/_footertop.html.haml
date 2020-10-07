@@ -1,0 +1,20 @@
+.footertop
+  .picture
+    = image_tag 'footertop.jpg', height: '260', width: '100%'
+    .contents
+      .leftcontent
+        .upper
+          スマホでかんたんフリマアプリ
+        .middle
+          今すぐ無料ダウンロード！
+        .lower
+          .left
+            = image_tag 'logo_red.svg', height: '50', width: '50'
+          .center
+            = link_to('https://apps.apple.com/jp/app/id667861049?l=ja') do
+              = image_tag 'Download_on_the_App_Store_Badge_JP_RGB_blk_100317.svg', height: '45', width: '144'
+          .right
+            = link_to('https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja') do
+              = image_tag 'google-play-badge.png', height: '60', width: '144'
+      .rightcontent
+        = image_tag 'index2.jpg', height: '260', width: '300'

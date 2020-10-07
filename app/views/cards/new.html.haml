@@ -1,0 +1,65 @@
+- breadcrumb :newcard
+= content_for(:html_title) { 'クレジットカード情報入力 - Fmarket' }
+= render 'shared/header'
+= render 'shared/breadcrumb'
+%main.card
+  .container
+    %article.content
+      .title
+        %h2 クレジットカード情報入力
+      .list-add
+        .list-add__card
+          = form_tag(pay_cards_path, method: :post, id: 'charge-form', name: 'inputForm', class: 'list-add__card__form') do
+            %span.payment-errors
+            .list-add__card--inum
+              %label.sub-title カード番号
+              %span.form-req 必須
+              %br
+              = text_field_tag 'number', '', class: 'list-add__card--inum-no', placeholder: '半角数字のみ' ,maxlength: '16', type: 'text'
+              %span.required-num
+            .list-add__card--inum-icon
+              %figure
+                = image_tag 'visa_logo.svg', alt: 'VISA', size:'49x20'
+                = image_tag 'mc_logo.svg', alt: 'Mastercard', size:'30x20'
+                = image_tag 'sc_logo.svg', alt: 'SAISON CARD', size:'30x20'
+                = image_tag 'jcb_logo.svg', alt: 'JCB', size:'30x20'
+                = image_tag 'ae_logo.svg', alt: 'AMERICAN EXPRESS', size:'21x20'
+                = image_tag 'dc_logo.png', alt: 'Diners Club', size:'32x20'
+                = image_tag 'dis_logo.png', alt: 'DISCOVER', size:'32x20'
+            .list-add__card--sed
+              %label.sub-title 有効期限
+              %span.form-req 必須
+              %br
+              %select{id: 'exp_month', name: 'exp_month', class: 'list-add__card--sed-limit', type: 'text'}
+                = ('01'..'12').each do |month|
+                  %option{value: month}
+                    = month
+              %i.icon-arrow-btm
+              %span.p-limit 月
+              %select{id: 'exp_year', name: 'exp_year', class: 'list-add__card--sed-limit', type: 'text'}
+                = (20..30).each do |year|
+                  - four_year = '20' + year.to_s
+                  %option{value: four_year}
+                    = year
+              %i.icon-arrow-btm
+              %span.p-limit 年
+            .list-add__card--iscd
+              %label.sub-title セキュリティコード
+              %span.form-req 必須
+              %br
+              = text_field_tag 'cvc', '', class: 'list-add__card--iscd-code', placeholder: 'カード背面4桁もしくは3桁の番号', maxlength: '4', type: 'text'
+              %span.required-cvc
+              .list-add__card--iscd-q
+                #click-balloon
+                  %span.form-q ?
+                  カード裏面の番号とは？
+                .balloon
+                  %span
+                    カードの裏面をご参照ください。
+                  %br
+                  = image_tag 'c-card_bk.png', alt: '', width: '180'
+            = submit_tag '追加する', id: 'token_submit', class: 'list-add__card--btn'
+    %nav= render 'shared/mypage_side'
+%nav= render 'shared/sellbutton'
+%aside= render 'shared/footertop'
+%footer= render 'shared/footer'

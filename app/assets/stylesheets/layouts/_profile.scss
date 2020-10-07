@@ -1,0 +1,69 @@
+.profile {
+  display: flex;
+  .container {
+    display: flex;
+    margin: map-get($m-margin, headerTop) auto 0;
+    overflow: hidden;
+    @include media('tb') {
+      width: 100%;
+      display: block;
+    }
+    .content {
+      float: right;
+      background: #fff;
+      width: map-get($m-width, contents);
+      font-size: 16px;
+      margin-bottom: auto;
+      order: 1;
+      @include media('tb') {
+        width: map-get($m-width, contents);
+      }
+      @include media('sp') {
+        width: 100%;
+      }
+    }
+    .title {
+      @include m-title;
+    }
+    .self {
+      display: flex;
+      justify-content: center;
+      background-image: image-url('user-bg.jpg');
+      padding: 72px 16px 24px;
+      &__icon {
+        padding: 0 5px 0 0;
+        &::before {
+          @include fa-icon($icon: '\f118', $color: gray);
+        }
+      }
+      &__nickname {
+        @include input-form($wd: 220px);
+        &:focus {
+          @include form-focus();
+        }
+      }
+    }
+    .message-form {
+      padding: 40px 16px;
+      margin: 0 auto;
+      &__profile {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        min-height: 216px;
+        border: 1px solid #ccc;
+        line-height: 1.5;
+        padding: 10px;
+        &:focus {
+          @include form-focus();
+        }
+      }
+      &__update-btn {
+        width: 100%;
+        padding: 0;
+        color: #fff;
+        @include red-btn();
+      }
+    }
+  }
+}

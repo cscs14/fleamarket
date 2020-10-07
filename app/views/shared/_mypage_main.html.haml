@@ -1,0 +1,72 @@
+.user
+  .user__icon
+    =link_to "/" do
+      %figure
+        = image_tag 'icon.png'
+      %h2.bold
+        =current_user.nickname
+      .mypage-number
+        評価 20 出品数 31
+  %section.mypage__content
+    %ul.mypage__content--tabs
+      %li.active.mypage__content--tab
+        %h3
+          お知らせ 
+      %li.mypage__content--tab
+        %h3
+          やることリスト
+    .tab__content
+      %ul
+        %li
+          =link_to "#",class: 'tab__content__item--link' do
+            %figure
+              =image_tag  ("logo_red.svg")
+            .tab__content__item--body
+              %p
+                通知はありません
+              %i.fa.fa-angle-right
+        %li
+          =link_to "#",class: 'tab__content__item--link' do
+            %figure
+              =image_tag  ("logo_red.svg")
+            .tab__content__item--body
+              %p
+                通知はありません
+              %i.fa.fa-angle-right      
+        %li
+          =link_to "#",class: 'tab__content__item--link' do
+            %figure
+              =image_tag  ("logo_red.svg")
+            .tab__content__item--body
+              %p
+                通知はありません
+              %i.fa.fa-angle-right                   
+        %li
+          =link_to "#",class: 'tab__content__item--link' do
+            %figure
+              =image_tag  ("logo_red.svg")
+            .tab__content__item--body
+              %p
+                通知はありません
+
+              %i.fa.fa-angle-right
+
+        %li.li-go
+          .mypage-go
+            =link_to "#" ,class: "mypage-go--list"do
+              一覧を見る
+    .mypage__buy
+      .mypage__buy__head
+        購入した商品
+      %ul.mypage__buy__tabs
+        %li.active.mypage__buy__tabs--list.active
+          %p
+            取引中
+        %li.mypage__buy__tabs--list
+          %p
+            過去の取引
+      .mypage__buy__foot
+        %ul
+          %li.mypage__buy__foot--not-img
+          %li.mypage__buy__foot--not-found
+            取引中の商品がありません

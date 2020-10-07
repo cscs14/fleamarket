@@ -1,0 +1,111 @@
+.purchased {
+  display: flex;
+  .container {
+    display: flex;
+    margin: map-get($m-margin, headerTop) auto 0;
+    overflow: hidden;
+    @include media('tb') {
+      width: 100%;
+      display: block;
+    }
+    .content {
+      float: right;
+      background: #fff;
+      width: map-get($m-width, contents);
+      font-size: 16px;
+      margin-bottom: auto;
+      order: 1;
+      @include media('tb') {
+        width: map-get($m-width, contents);
+      }
+      @include media('sp') {
+        width: 100%;
+      }
+    }
+    .title {
+      padding: 0 16px;
+      background-color: #fafafa;
+      font-size: 16px;
+      line-height: 72px;
+      font-weight: bold;
+    }
+    .tabs {
+      &__title {
+        background-color: #eee;
+        .active {
+          border-top: 2px solid #ea352d;
+          background-color: #fff;
+        }
+        li {
+          width: 49.6%;
+          display: inline-block;
+          text-align: center;
+          &:hover {
+            opacity: 0.8;
+          }
+          h3 {
+            font-size: 22px;
+            font-weight: bold;
+          }
+        }
+        a {
+          position: relative;
+          display: block;
+          color: #333;
+          font-size: 16px;
+          line-height: 72px;
+        }
+      }
+      &__content {
+        font-size: 14px;
+        li {
+          border-bottom: 1px solid #eee;
+          padding: 16px;
+          &:hover {
+            background-color: #fafafa;
+          }
+        }
+        &--lists {
+          .buy-list {
+            &__item {
+              display: flex;
+              &--img {
+                margin-right: 20px;
+              }
+              &--text {
+                width: 100%;
+                p {
+                  margin-bottom: 15px;
+                }
+                span {
+                  font-weight: bold;
+                  @include bg-icon($wd: 60px, $bg: #888);
+                }
+              }
+              &--arrow {
+                @include linkArrow($color: #333);
+              }
+            }
+          }
+        }
+        .not-found {
+          &--text {
+            text-align: center;
+            font-size: 16px;
+            color: #ccc;
+            font-weight: bold;
+            padding: 10px 0 60px;
+          }
+          &--img {
+            padding: 160px 0 0;
+            background-image: image-url('logo_red.svg');
+            opacity: 0.1;
+            background-repeat: no-repeat;
+            background-position: center 40px;
+            background-size: 78px 85px;
+          }
+        }
+      }
+    }
+  }
+}

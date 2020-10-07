@@ -1,0 +1,13 @@
+- brand_logo = @card_info.brand
+- if brand_logo == 'Visa'
+  = image_tag 'visa_logo.svg', alt: 'VISA', size:'60x30'
+- elsif brand_logo == 'MasterCard'
+  = image_tag 'mc_logo.svg', alt: 'Mastercard', size:'45x35'
+- elsif brand_logo == 'JCB'
+  = image_tag 'jcb_logo.svg', alt: 'JCB', size:'45x35'
+- elsif brand_logo == 'American Express'
+  = image_tag 'ae_logo.svg', alt: 'AMERICAN EXPRESS', size:'35x35'
+- elsif brand_logo == 'Diners Club'
+  = image_tag 'dc_logo.png', alt: 'Diners Club', size:'45x35'
+- elsif brand_logo == 'Discover'
+  = image_tag 'dis_logo.png', alt: 'DISCOVER', size:'45x35'

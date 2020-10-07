@@ -1,0 +1,38 @@
+=render 'regi_header_3'
+.redistration-main
+  .redistration-main__form
+    = form_with model:@user ,url: sign_in_credit_path, builder: WithErrorFormBuilder,method: :get,local: true do |f|
+      .signup-form
+        .signup-form__group
+          %label お名前(全角)
+          %span 必須
+        .name-form
+          = f.text_field :last_name, autofocus: true, autocomplete: "last_name", placeholder: "例) 山田", class: "signup-form__group-inner", pattern:"[ぁ-んァ-ン一-龥]+", value:"#{session[:user]["last_name"]}"
+          = f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: "例) 彩", class: "signup-form__group-inner", pattern:"[ぁ-んァ-ン一-龥]+", value:"#{session[:user]["first_name"]}"
+        .signup-form__group
+          %label お名前カナ(全角)
+          %span 必須
+        .name-form
+          = f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", placeholder: "例) ヤマダ", class: "signup-form__group-inner", pattern:"([ァ-ン]|ー)+",value:"#{session[:user]["last_name_kana"]}"
+          = f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", placeholder: "例) アヤ", class: "signup-form__group-inner",  pattern:"([ァ-ン]|ー)+",value:"#{session[:user]["first_name_kana"]}"
+        = f.fields_for :deliver_address do |fields|   
+          .signup-form__group
+            %label 郵便番号
+            %span 必須
+            = fields.text_field :postal_code, autofocus: true, autocomplete: "postal_code", placeholder: "例) 1234567(7桁)", class: "signup-form__group-inner",value:"#{session[:deliver_address]["postal_code"]}"
+          .signup-form__group
+            %label 都道府県
+            %span 必須
+            = fields.collection_select :prefecture_id, Prefecture.all , :name, :name, {prompt: "--",selected: session[:deliver_address]["prefecture"]}
+          .signup-form__group  
+            %label 市町村名
+            %span 必須
+            = fields.text_field :city, autofocus: true, autocomplete: "", placeholder: "例)横浜市緑区", class: "signup-form__group-inner",  pattern:"[ぁ-んァ-ン一-龥]+", value:"#{session[:deliver_address]["city"]}"
+          .signup-form__group
+            %label 番地
+            %span 必須
+            = fields.text_field :street_address, autofocus: true, autocomplete: "", placeholder: "例)青山1-1", class: "signup-form__group-inner",   value:"#{session[:deliver_address]["street_address"]}"
+        .signup-form
+          .actions
+            = f.submit "次へ進む" ,class: "regi-btn-red"
+= render 'devise/shared/footer_login'

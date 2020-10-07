@@ -1,0 +1,176 @@
+- breadcrumb :items
+.content
+  =render "shared/header"
+  =render 'shared/breadcrumb'
+  - if user_signed_in? && current_user.id == @freemarket.user_id
+    %section.content-main
+      %h1.goods-name
+        = @freemarket.item
+      %p.goods-info
+        この商品は
+        = @freemarket.user.nickname
+        さんが出品した商品になります
+      .goods-main
+        .goods-photo
+          .goods-photo__main
+            = image_tag @freemarket.item_images[0].image_url.url, size:'300x300' 
+          .goods-photo__sub
+            - @freemarket.item_images.each.with_index do |item_image, index|
+              = image_tag item_image.image_url.url ,  size:'60x60',class: "image-sub"
+        %table.goods-data
+          %tr
+            %th 出品者
+            %td 
+              = @freemarket.user.nickname
+          %tr
+            %th カテゴリー
+            %td テストカテゴリ
+          %tr
+            %th ブランド
+            %td テストブランド
+          %tr
+            %th 商品サイズ
+            %td M
+          %tr
+            %th 商品の状態
+            %td 
+              = @freemarket.condition
+          %tr
+            %th 配送料の負担
+            %td 
+              = @freemarket.ship_charge
+          %tr
+            %th 配送の方法
+            %td フリマらくらく便
+          %tr
+            %th 配送元地域
+            %td
+              =@freemarket.ship_from
+          %tr
+            %th 発送日の目安
+            %td 
+              = @freemarket.ship_day
+    .edit
+      .edit-form
+        = link_to edit_freemarket_path do
+          %button{class:'form-btn edit-btn'}
+            %span 商品編集する
+        %p or
+        %button{class:'form-btn gray-btn comment-send'}
+          %span 出品を一時停止する
+        = button_to 'この商品を削除する', freemarket_path(@freemarket.id), { method: :delete, id:'item-delete', class:'form-btn gray-btn', data: { confirm: '本当に削除しますか？'} }
+    .message
+      .message-box
+      .message-form
+        %form.message-form__content
+          %p 相手のことを考え丁寧なコメントを心がけましょう。　不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          %textarea{type:'text', name:'message', class:'form-text'}
+          %button{type:'submit', class:'form-btn gray-btn comment-send'}
+            %span コメントする
+
+  - else
+    %section.content-main
+      %h1.goods-name
+        = @freemarket.item
+      %p.goods-info
+        この商品は
+        = @freemarket.user.nickname
+        さんが出品した商品になります
+      .goods-main
+        .goods-photo
+          .goods-photo__main
+            = image_tag @freemarket.item_images[0].image_url.url, size:'300x300' 
+          .goods-photo__sub
+            - @freemarket.item_images.each.with_index do |item_image, index|
+              = image_tag item_image.image_url.url ,  size:'60x60',class: "image-sub"
+        %table.goods-data
+          %tr
+            %th 出品者
+            %td
+              = @freemarket.user.nickname
+          %tr
+            %th カテゴリー
+            %td テストカテゴリ
+          %tr
+            %th ブランド
+            %td テストブランド
+          %tr
+            %th 商品サイズ
+            %td M
+          %tr
+            %th 商品の状態
+            %td
+              = @freemarket.condition
+          %tr
+            %th 配送料の負担
+            %td
+              = @freemarket.ship_charge
+          %tr
+            %th 配送の方法
+            %td フリマらくらく便
+          %tr
+            %th 配送元地域
+            %td
+              =@freemarket.ship_from
+          %tr
+            %th 発送日の目安
+            %td
+              = @freemarket.ship_day
+      .price-box
+        %span.price-box__cash
+          ¥
+          = @freemarket.price.to_s(:delimited)
+        %span.price-box__tax (税込)
+        %span.price-box_shipping 送料込み
+      =link_to buy_freemarket_path, class:"buy-btn" do
+        購入画面に進む
+      .goods-detail
+        %p.goods-detail_comment
+          = @freemarket.description
+      .btn-box
+        .btn-box__left
+          =link_to "#", class:"btn btn-good" do
+            =icon('fas', 'heart')
+            %span いいね
+            %span.good-count 1
+          =link_to "#", class:"btn btn-report" do
+            =icon('fas', 'flag')
+            %span 不適切な商品の報告
+        .btn-box__right
+          =link_to "#", class:"btn btn-lock" do
+            =icon('fas', 'lock')
+            %span あんしん・あんぜんへの取り組み
+    .message
+      .message-box
+      .message-form
+        %form.message-form__content
+          %p 相手のことを考え丁寧なコメントを心がけましょう。　不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          %textarea{type:'text', name:'message', class:'form-text'}
+          %button{type:'submit', class:'form-btn gray-btn comment-send'}
+            %span コメントする
+
+    .another-goods
+      .another-goods__back
+        =link_to "#" do
+          =icon('fas', 'chevron-left')
+          テスト戻る
+      .another-goods__next
+        =link_to "#" do
+          テスト進む
+          =icon('fas', 'chevron-right')
+    .sns-links
+      .sns-links__box
+        .facebook
+          =link_to "#" do
+            =icon('fab', 'facebook-square',class:'logo-facebook')
+        .twetter
+          =link_to "#" do
+            =icon('fab', 'twitter',class:'logo-twitter')
+        .line
+          =link_to "#" do
+            =icon('fab', 'line',class:'logo-line')
+        .pintarest
+          =link_to "#" do
+            =icon('fab', 'pinterest',class:'logo-pinterest')
+  = render partial: 'shared/footertop'
+  = render partial: 'shared/footer'

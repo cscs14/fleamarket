@@ -1,0 +1,53 @@
+.login-header {
+  display: flex;
+  justify-content: center;
+  height: 128px;
+
+  .header-center {
+    margin: 40px 0 0;
+  }
+
+  &--link {
+    display: block;
+    margin: auto;
+    width: 185px;
+    height: 49px;
+    line-height: 49px;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  img {
+    vertical-align: middle;
+    width: 185px;
+    height: 49px;
+  }
+}
+
+.footer-login {
+  padding: 40px 0;
+
+  &__navi {
+    display: flex;
+    justify-content: center;
+
+    li {
+      margin: 0;
+      font-size: 12px;
+      margin-left: 16px;
+
+      a {
+        display: block;
+        color: #333;
+        text-decoration: none;
+      }
+    }
+  }
+  &__mercari-logo {
+    display: block;
+    margin: 40px auto 0;
+    width: 80px;
+    height: 65px;
+  }
+}

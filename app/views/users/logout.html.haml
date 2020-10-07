@@ -1,0 +1,20 @@
+- breadcrumb :logout
+= render 'shared/header'
+= render 'shared/breadcrumb'
+%section.logout-wrapper
+  .profile-logout
+    = render 'shared/mypage_side'
+  .logout-content-wrpper
+    =link_to destroy_user_session_path,method: :delete do
+      .logout-container
+        %form{action: "", method: "post",class: "logout-content"}
+          .button
+            .logout-content__btn
+              ログアウト
+
+
+  = render "/shared/sellbutton"
+.footertop
+= render "/shared/footertop"
+.footer
+= render "/shared/footer"

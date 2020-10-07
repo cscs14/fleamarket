@@ -1,0 +1,88 @@
+- breadcrumb :category, @category
+%header
+  =render "/shared/header"
+  =render 'shared/breadcrumb'
+.category-main-box
+  .category-main-box__content
+    %ul.category-main-box__content__children
+      - @children.first(9).each do |child|
+        %li.children-list-menu
+          =link_to category_path(child) do
+            =child.category_name
+    .category-main-box__content__inner
+      %h1.category-parent-name
+        = "#{@parent.category_name} の商品一覧"
+      .category-main-box__content__inner__items
+        %section.item-list-box
+          = link_to "" do
+            %figure.item-list-box__image
+              =image_tag "bed.jpg", class:"item-list-box__item-photo"
+            .item-list-box__text
+              %h3.item-list-box__name
+                テスト商品
+              .item-list-box__text-price
+                .text-price
+                  ¥1000
+        %section.item-list-box
+          = link_to "" do
+            %figure.item-list-box__image
+              =image_tag "bed.jpg", class:"item-list-box__item-photo"
+            .item-list-box__text
+              %h3.item-list-box__name
+                テスト商品
+              .item-list-box__text-price
+                .text-price
+                  ¥1000
+        %section.item-list-box
+          = link_to "" do
+            %figure.item-list-box__image
+              =image_tag "bed.jpg", class:"item-list-box__item-photo"
+            .item-list-box__text
+              %h3.item-list-box__name
+                テスト商品
+              .item-list-box__text-price
+                .text-price
+                  ¥1000
+        %section.item-list-box
+          = link_to "" do
+            %figure.item-list-box__image
+              =image_tag "bed.jpg", class:"item-list-box__item-photo"
+            .item-list-box__text
+              %h3.item-list-box__name
+                テスト商品
+              .item-list-box__text-price
+                .text-price
+                  ¥1000
+        %section.item-list-box
+          = link_to "" do
+            %figure.item-list-box__image
+              =image_tag "bed.jpg", class:"item-list-box__item-photo"
+            .item-list-box__text
+              %h3.item-list-box__name
+                テスト商品
+              .item-list-box__text-price
+                .text-price
+                  ¥1000
+        %section.item-list-box
+          = link_to "" do
+            %figure.item-list-box__image
+              =image_tag "bed.jpg", class:"item-list-box__item-photo"
+            .item-list-box__text
+              %h3.item-list-box__name
+                テスト商品
+              .item-list-box__text-price
+                .text-price
+                  ¥1000
+      .category-text
+        .category-text__name
+          %h3
+            = @parent.category_name
+        .category-text__inner
+          %p
+            = "#{@parent.category_name}の着ない服、いらない洋服を売るならフリマへ。#{@parent.category_name}の商品は100万点以上あります。人気のあるカテゴリーはパーカーと長財布です。人気の商品は「【超限定】NIKE　AIR FORCE 35th スネーク柄　パーカー」や「521【BALLY】長財布　マネークリップ　お札入れ　黒　二つ折り財布」があります。#{@parent.category_name}の買い取りやリサイクル処分、服の整理を検討中の方にお勧めです。"
+
+  =render "/shared/sellbutton"
+.footertop
+  =render "/shared/footertop"
+.footer
+  =render "/shared/footer"

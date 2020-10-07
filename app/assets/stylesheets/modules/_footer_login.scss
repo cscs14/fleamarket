@@ -1,0 +1,30 @@
+.footer-login {
+  padding: 40px 0;
+
+  &__navi {
+    display: flex;
+    justify-content: center;
+
+    li {
+      margin: 0;
+      font-size: 12px;
+      margin-left: 16px;
+
+      a {
+        display: block;
+        @include linkText($color: #333, $och: 0.7);
+      }
+    }
+  }
+  &__mercari-logo {
+    display: block;
+    margin: 40px auto 0;
+    width: 80px;
+    height: 65px;
+    img {
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}

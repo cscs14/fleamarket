@@ -1,0 +1,277 @@
+@mixin card-item() {
+  &__item {
+    height: 573px;
+    width: 1020px;
+  }
+  &__contents {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px 20px;
+    width: 100%;
+  }
+  &__content {
+    width: 188px;
+    height: 252px;
+    display: inline-block;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: #fff;
+    border: 0px solid transparent;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    &:hover {
+      outline: 1px solid rgb(0, 149, 238);
+    }
+    &__more-link {
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+    }
+  }
+  &__image {
+    width: 188px;
+    height: 188px;
+    overflow: hidden;
+    position: relative;
+    img {
+      height: 100%;
+      width: 100%;
+      z-index: 1;
+    }
+    span {
+      align-items: center;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 0 14px 14px 0;
+      bottom: 8px;
+      box-sizing: border-box;
+      color: #fff;
+      display: inline-flex;
+      font-size: 17px;
+      height: 28px;
+      letter-spacing: 0.02em;
+      margin: 0;
+      padding: 0 12px;
+      position: absolute;
+      z-index: 2;
+      left: 0;
+    }
+  }
+  &__item-name {
+    color: #222;
+    font-size: 14px;
+    height: 64px;
+    line-height: 1.4em;
+    padding: 0 12px;
+    white-space: normal;
+    word-break: break-word;
+    background-color: #fff;
+    margin-top: 10px;
+    span {
+      word-break: break-word;
+      display: inline-block;
+      height: 2.8em;
+      overflow: hidden;
+      position: relative;
+      text-overflow: ellipsis;
+      align-items: center;
+      visibility: visible;
+      background-color: #fff;
+      &:after {
+        background: linear-gradient(90deg, hsla(0, 0%, 100%, 0), #fff 72%);
+        bottom: 0;
+        content: '';
+        height: 50%;
+        position: absolute;
+        right: 0;
+        width: 50%;
+      }
+    }
+  }
+}
+
+@mixin m-title {
+  height: 50px;
+  padding: 8px 24px;
+  h2 {
+    font: {
+      size: 24px;
+      weight: bold;
+    }
+    @include media('sp') {
+      font-size: 18px;
+      line-height: 1;
+    }
+    text-align: center;
+    line-height: 1.4;
+  }
+}
+
+@mixin form-focus($color: #0099ff) {
+  &:focus {
+    border: 1px solid $color;
+    outline: 0;
+  }
+}
+
+@mixin error-text($color: #ea352d) {
+  font-size: 14px;
+  color: $color;
+  text-align: right;
+  line-height: 20px;
+}
+
+@mixin fa-icon($icon, $color, $wg: 400, $size: 3em) {
+  font-family: 'Font Awesome 5 Free';
+  content: $icon;
+  color: $color;
+  font: {
+    weight: $wg;
+    size: $size;
+  }
+}
+
+@mixin bg-icon(
+  $wd: 30px,
+  $hg: 20px,
+  $br: 2px,
+  $bg: #ea352d,
+  $fs: 12px,
+  $lh: 22px
+) {
+  display: inline-block;
+  width: $wd;
+  height: $hg;
+  border-radius: $br;
+  background-color: $bg;
+  color: #fff;
+  font-size: $fs;
+  text-align: center;
+  line-height: $lh;
+}
+
+@mixin red-btn(
+  $wd: 100%,
+  $mg: 16px 0 0,
+  $fs: 14px,
+  $fw: 0,
+  $lh: 48px,
+  $ocd: 0.95,
+  $och: 1
+) {
+  display: block;
+  margin: $mg;
+  width: $wd;
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  font-size: $fs;
+  font-weight: $fw;
+  text-align: center;
+  line-height: $lh;
+  opacity: $ocd;
+  &:hover {
+    opacity: $och;
+    transition: all ease-out 0.3s;
+    cursor: pointer;
+  }
+}
+
+@mixin linkText(
+  $color: #0099e8,
+  $ocd: 0.95,
+  $och: 1,
+  $td: underline,
+  $cs: pointer
+) {
+  color: $color;
+  opacity: $ocd;
+  &:hover {
+    opacity: $och;
+    text-decoration: $td;
+    transition: all ease-out 0.3s;
+    cursor: $cs;
+  }
+}
+
+@mixin linkArrow($side: 'right', $color: #0099e8) {
+  position: relative;
+  @if ($side == 'right') {
+    padding-right: 25px;
+  } @else if ($side == 'left') {
+    padding-left: 25px;
+  }
+  &::after {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    top: 40%;
+    @if ($side == 'right') {
+      right: 10px;
+      font-weight: bold;
+    } @else if ($side == 'left') {
+      left: 10px;
+      font-weight: bold;
+    }
+    margin-top: -2.5px;
+    border-top: 2px solid $color;
+    border-right: 2px solid $color;
+    transform: rotate(45deg);
+  }
+}
+
+@mixin selectArrow($img: 'arrow_icon.svg', $bz: 15px 15px) {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: image-url($img);
+  background-repeat: no-repeat;
+  background-size: $bz;
+  background-position: right 10px center;
+}
+
+@mixin input-form($wd, $hg: 48px, $mg: 0 0 0 8px, $pd: 10px 16px 8px) {
+  background: #fff;
+  width: $wd;
+  height: $hg;
+  border: 1px solid #ccc {
+    radius: 4px;
+  }
+  line-height: 1.5;
+  min-height: 1.5;
+  margin: $mg;
+  padding: $pd;
+}
+
+@mixin balloon() {
+  position: absolute;
+  display: none;
+  top: 30.3%;
+  left: 49.2%;
+  width: 345px;
+  z-index: 1;
+  padding: 15px;
+  border-radius: 5px;
+  background: #e4e3e3;
+  box-sizing: border-box;
+  &:before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: -8%;
+    left: 80%;
+    border-style: solid;
+    border-width: 0 10px 15px 10px;
+    border-color: transparent transparent #e4e3e3 transparent;
+  }
+  @include media('tb') {
+    top: 22.8%;
+    left: 33.8%;
+  }
+  @include media('sp') {
+    top: 23.7%;
+    left: 24.6%;
+  }
+}

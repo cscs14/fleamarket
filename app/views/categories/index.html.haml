@@ -1,0 +1,31 @@
+- breadcrumb :categories
+%header
+  =render "/shared/header"
+  =render 'shared/breadcrumb'
+.category-main
+  %h2 カテゴリー一覧
+  .category-parent
+    - @parents.each do |parent|
+      =link_to category_path(parent), class:"category-parent__list" do
+        =parent.category_name
+  - @parents.each do |parent|
+    .category-list-box
+      .category-parent-title
+        %h3
+          =parent.category_name
+      .category-list-box__content
+        =link_to category_path(parent), class: "category-list-box__content__parent" do
+          すべて
+        - parent.children.each do |child|
+          .category-list-box__content__children
+            .child-name
+              =child.category_name
+            .grandchild
+              - child.children.each do |grandchild|
+                =link_to category_path(grandchild), class:"grandchild__list" do
+                  =grandchild.category_name
+  =render "/shared/sellbutton"
+.footertop
+  =render "/shared/footertop"
+.footer
+  =render "/shared/footer"

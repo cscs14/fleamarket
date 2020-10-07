@@ -1,0 +1,52 @@
+.picture {
+  display: flex;
+  position: relative;
+  justify-content: center;
+
+  .contents {
+    position: absolute;
+    display: flex;
+    width: 750px;
+
+    .leftcontent {
+      margin-top: 40px;
+    }
+
+    .upper {
+      color: rgb(255, 255, 255);
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .middle {
+      color: rgb(255, 255, 255);
+      font-size: 35px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .lower {
+      display: flex;
+
+      .left {
+        margin-right: 20px;
+      }
+
+      .center {
+        margin-right: 10px;
+        margin-top: 5px;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+
+      .right:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+  @include media('sp') {
+    display: none;
+  }
+}

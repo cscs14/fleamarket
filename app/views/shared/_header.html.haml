@@ -1,0 +1,61 @@
+%header.main-header
+  .header-inner
+    .inner-top
+      .inner-top__logo
+        = link_to root_path do
+          = image_tag "fmarket_logo_red.svg", alt: 'logo', height: '36', width: '134', class: 'header-inner__top__logo'
+      %form{action:"/", method:"post", class: "inner-top__form"}
+        %input{type:"search", placeholder:"何かお探しですか？",class:"search-form"}
+        %button{type:"submit", class:"search-form__icon"}
+          = icon('fas','search',class:'icon')
+    .inner-lwr
+      .lwr-menu
+        .lwr-menu__category
+          =link_to categories_path ,class:"menu" do
+            =icon('fas', 'list-ul')
+            %span カテゴリーから探す
+          .category-list
+            %ul.category-list__parent
+              - @parents.each do |parent|
+                %li.list-parent
+                  =link_to category_path(parent),class:"parent-name" do
+                    =parent.category_name
+                  %ul.list-parent__child
+                    - parent.children.each do |child|
+                      %li.list-child
+                        =link_to category_path(child),class:"child-name" do
+                          =child.category_name
+                        %ul.list-child__son
+                          - child.children.first(15).each do |grandchild|
+                            %li.list-son
+                              =link_to category_path(grandchild),class:"son-name"do
+                                =grandchild.category_name
+        .lwr-menu__brand
+          =link_to "",class:"menu" do
+            =icon('fas', 'tags')
+            %span ブランドから探す
+      .lwr-user
+        - if user_signed_in?
+          .lwr-user__like
+            =link_to"",class:"login-menu" do
+              =icon('far', 'heart',class:"icon-header")
+              %span いいね！一覧
+          .lwr-user__notice
+            =link_to"",class:"login-menu" do
+              =icon('far', 'bell',class:"icon-header")
+              %span お知らせ
+          .lwr-user__todo
+            =link_to"",class:"login-menu" do
+              =icon('fas', 'check',class:"icon-header")
+              %span やることリスト
+          .lwr-user__mypage
+            =link_to  users_path,class:"login-menu" do
+              =icon('fas','user',class:"icon-header")
+              %span マイページ
+        - else
+          .lwr-user__new
+            =link_to new_user_registration_path, class:"user-new" do
+              新規会員登録
+          .lwr-user__login
+            =link_to new_user_session_path, class:"user-login" do
+              ログイン

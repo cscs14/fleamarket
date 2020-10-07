@@ -1,0 +1,33 @@
+.logout-wrapper {
+  display: flex;
+  margin: 40px auto 0;
+  width: 1020px;
+}
+
+.profile-logout {
+  display: flex;
+}
+
+.logout-container {
+  width: 700px;
+  background-color: #fff;
+  padding: 64px;
+  .button {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+}
+
+.logout-content {
+  &__btn{
+    background: #ea352d;
+    color: #fff;
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+  }
+}

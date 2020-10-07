@@ -1,0 +1,126 @@
+.wrapper
+  %header
+    =render "devise/shared/header_login"
+  %main.sell-contents
+    %section.sell-contents__main
+      .sell-content
+        .sell-content__inner
+          %h2 商品の情報を入力
+          .sell-content__form
+            = form_for @freemarket do |f|
+              .sell-upload
+                %label 出品画像
+                %span.must 必須
+                %p.info 最大10枚までアップロードできます
+                .sell-upload__image
+                  .item-preview
+                    -@freemarket.item_images.each do |image|
+                      .item-preview__inner
+                        .item-image
+                          = image_tag image.image_url.url, width: "112", height: "112", alt: "preview"
+                        .item-edit
+                          .item-edit__image
+                            %label.edit_btn 編集
+                          .item-edit__delete
+                            %span 削除
+                  #image-drop
+                    %label{for: "freemarket_item_images_attributes_#{@freemarket.item_images.length}_image_url", class: "label-box", id: "label-box--#{@freemarket.item_images.length}"}
+                      .label-content
+                        %pre.label-box__text-visible クリックしてファイルをアップロード
+                  .hidden-image
+                    = f.fields_for :item_images do |i|
+                      = i.file_field :image_url, class: "hidden-field"
+                      = i.check_box:_destroy, class: "hidden-checkbox"
+                    - @freemarket.item_images.length.upto(4) do |i|
+                      %input{name: "freemarket[item_images_attributes][#{i}][image_url]", id: "freemarket_item_images_attributes_#{i}_image_url", class:"hidden-field", type:"file"}
+              .sell.name
+                .form-name
+                  %label 商品名
+                  %span.must 必須
+                  .form-name__input
+                    = f.text_field :item, placeholder: '商品名(必須　４０文字まで)', class: 'input-name',  required: ""
+                .form-info
+                  %label 商品の説明
+                  %span.must 必須
+                  .form-info__text
+                  = f.text_area :description, class:"text-info", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）", required: ""
+              .sell.detail
+                %h3.detail-category 商品詳細
+                .sell-form
+                  .form-pulldown
+                    %label カテゴリ
+                    %span.must 必須
+                    .category-pulldown
+                      =icon('fas', 'chevron-down',class:"down-icon")
+                      %select.pulldown
+                  .form-pulldown
+                    %label 商品の状態
+                    %span.must 必須
+                    .condition-pulldown
+                      =icon('fas', 'chevron-down',class:"down-icon")
+                      = f.select :condition, ["新品、未使用", "未使用に近い", "目立った傷や汚れなし", "やや傷や汚れあり", "傷や汚れあり", "全体的に状態が悪い"], {prompt: '---'}, {class: "pulldown", required: ""}
+              .sell.shipping
+                %h3.shipping-about 配送について
+                .sell-form
+                  .form-pulldown
+                    %label 配送料の負担
+                    %span.must 必須
+                    .shipping-pulldown
+                      =icon('fas', 'chevron-down',class:"down-icon")
+                      = f.select :ship_charge, ["送料込み（出品者負担）", "着払い（購入者負担）"], {prompt: '---'}, {class: "pulldown",  required: ""}
+                  .form-pulldown
+                    %label 発送元の地域
+                    %span.must 必須
+                    .shipping-pulldown
+                      =icon('fas', 'chevron-down',class:"down-icon")
+                      = f.collection_select(:ship_from, Prefecture.all,:name, :name, {prompt: '---'}, {class: 'pulldown'})
+                  .form-pulldown
+                    %label 発送までの日数
+                    %span.must 必須
+                    .shipping-pulldown
+                      =icon('fas', 'chevron-down',class:"down-icon")
+                      = f.select :ship_day, ["1〜2日で発送", "2〜3日で発送", "4〜7日で発送"], {prompt: '---'}, {class: "pulldown",  required: ""}
+
+              .sell.price
+                %h3.price-limit 販売価格(300~9,999,999)
+                .sell-box
+                  .sell-box__input
+                    .price-input-box
+                      %label.input-box__text
+                        価格
+                        %span.must 必須
+                      .input-box__price
+                        ¥
+                        = f.text_field :price, placeholder: "例) 300", class: "input-price", id: "jsPrice", required: ""
+
+                  .sell-box__tax
+                    %label 販売手数料(10%)
+                    .price-tax
+                      %input#jsTax.input-tax{readonly:"readonly"}
+                  .sell-box__total
+                    %label 販売利益
+                    .price-total
+                      %input#jsTotal.input-total{readonly:"readonly"}
+
+              .sell.submit-btn
+                %p.sell-text
+                  =link_to "", class:"text-warning" do
+                    禁止されている出品
+                  、
+                  =link_to "", class:"text-warning" do
+                    行為
+                  を必ずご確認ください。
+                %span.sell-text またブランド品でシリアルナンバー等がある場合はご記載ください。
+                =link_to "", class:"text-warning" do
+                  偽ブランドの販売
+                %span.sell-text は犯罪であり処罰される可能性があります。
+                %p.sell-text
+                  また、出品をもちまして
+                  =link_to "", class:"text-warning" do
+                    加盟店規約
+                  に同意したことになります。
+                = f.submit '出品する', class: 'form-btn red-btn'
+                =link_to freemarket_path, class:"form-btn gray-btn" do
+                  もどる
+  %footer
+  =render "devise/shared/footer_login"

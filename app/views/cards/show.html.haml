@@ -1,0 +1,24 @@
+- breadcrumb :cards
+= content_for(:html_title) { '支払い方法 - Fmarket' }
+= render 'shared/header'
+= render 'shared/breadcrumb'
+%main.card
+  .container
+    %article.content
+      .title
+        %h2 支払い方法
+      .list
+        %section.list__card
+          %h3.sub-title クレジットカード一覧
+          - if @card.blank?
+            = link_to new_card_path ,class: 'list__card--btn', data: {turbolinks: :false} do
+              %span クレジットカードを追加する
+          - else
+            = render 'list'
+        .list__border
+        .list__payment-link
+          %span=link_to '支払い方法について','#'
+    %nav= render 'shared/mypage_side'
+%nav= render 'shared/sellbutton'
+%aside= render 'shared/footertop'
+%footer= render 'shared/footer'

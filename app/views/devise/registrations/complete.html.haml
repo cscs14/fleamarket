@@ -1,0 +1,13 @@
+=render 'regi_header_5'
+.redistration-main
+  .redistration-main__head
+    %h2
+      会員登録完了
+  .redistration-main__form
+    .signup-form
+      ありがとうございます。会員登録完了しました。  
+  .signup-form
+    .signup-form__btn
+      = link_to root_path, method: :get  do
+        フリマをはじめる
+= render 'devise/shared/footer_login'

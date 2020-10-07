@@ -1,0 +1,42 @@
+.toppage-button {
+  bottom: 32px;
+  font-size: 22px;
+  height: 160px;
+  right: 32px;
+  width: 160px;
+  margin-left: 80%;
+  position: fixed;
+  z-index: 100;
+  @include media('sp') {
+    font-size: 15px;
+    bottom: -80px;
+    right: -50px;
+  }
+  &__main {
+    background-color: rgb(234, 53, 45);
+    border-radius: 50%;
+    padding-top: 20px;
+    text-align: center;
+    height: 160px;
+    width: 160px;
+    display: block;
+    .toppage-button__main-link {
+      text-decoration: none;
+      color: white;
+      &::after {
+        @include fa-icon($icon: '\f030', $color: white, $wg: 900);
+        @include media('sp') {
+          @include fa-icon($icon: '\f030', $color: white, $wg: 900, $size: 2em);
+        }
+      }
+    }
+    @include media('sp') {
+      width: 80px;
+      height: 80px;
+      padding-top: 6px;
+    }
+  }
+  &__main-up {
+    margin: 10px 0 5px;
+  }
+}

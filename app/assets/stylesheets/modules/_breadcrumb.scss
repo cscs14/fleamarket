@@ -1,0 +1,22 @@
+.breadcrumb {
+  background-color: #fff;
+  box-shadow: #0000002e 0px 2px 4px;
+  position: relative;
+  nav {
+    width: 1020px;
+    margin: 0 auto;
+    padding: 15px 10px;
+    height: 45px;
+    @include media('tb') {
+      width: map-get($m-width, contents);
+      margin: 0 auto;
+    }
+    @include media('sp') {
+      width: 100%;
+      margin: 0 10px 0;
+    }
+  }
+  a {
+    @include linkText($color: #333, $ocd: 1, $och: 0.5);
+  }
+}

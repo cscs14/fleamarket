@@ -1,0 +1,58 @@
+=render 'regi_header_1'
+.redistration-main
+  .redistration-main__head
+    %h2
+      会員情報を入力
+  .redistration-main__form
+    = form_with model:@user, url: sign_in_phone_path ,builder: WithErrorFormBuilder, method: :get,local: true  do|f|
+      .error-messages.none-top-margin
+      - if @messages != nil
+        .error-messages.text-center
+          %p
+            = @messages
+      .signup-form
+        .signup-form__group
+          %label ニックネーム
+          %span 必須
+          = f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "例) 太郎", class: "signup-form__group-inner", value:"#{session[:user]["nickname"]}"
+        .signup-form__group
+          %label メールアドレス
+          %span 必須
+          = f.email_field :email, autocomplete: "new-password", placeholder: "pc・携帯どちらでも可", class: "signup-form__group-inner", value:"#{session[:user]["email"]}"
+        .signup-form__group
+          %label{:for => ""} パスワード(確認)
+          %span 必須
+          = f.password_field :password, autocomplete: "new-password", placeholder: "７文字以上の半角英数字", class: "signup-form__group-inner", value:"#{session[:user]["password"]}"
+          %p.text-gray
+            ※ 英字と数字の両方を含めて設定してください。
+          .signup-form__group
+          %h3 本人確認
+          %p 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+        .signup-form__group
+          %label{:for => ""} お名前(全角)
+          %span 必須
+          .name-form
+            = f.text_field :last_name, autofocus: true, autocomplete: "last_name", placeholder: "例) 山田", class: "signup-form__group-inner", pattern:"[ぁ-んァ-ン一-龥]+", value:"#{session[:user]["last_name"]}"
+            = f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: "例) 彩", class: "signup-form__group-inner", pattern:"[ぁ-んァ-ン一-龥]+", value:"#{session[:user]["first_name"]}"
+        .signup-form__group
+          %label{:for => ""} お名前カナ(全角)
+          %span 必須
+          .name-form
+            = f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", placeholder: "例) ヤマダ", class: "signup-form__group-inner",pattern:"([ァ-ン]|ー)+",  value:"#{session[:user]["last_name_kana"]}"
+            = f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", placeholder: "例) アヤ", class: "signup-form__group-inner", pattern:"([ァ-ン]|ー)+", value:"#{session[:user]["last_name_kana"]}"
+        .signup-form__group
+          %label{:for => ""} 生年月日
+          %span 必須
+          .birthday-form
+            != sprintf(f.date_select(:birthday, prefix:'birthday',with_css_classes:'user-main__contents__form__group__item__input', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')
+          %p.text-gray
+            ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+      .signup-form
+        .signup-form__group
+          %p
+            「次へ進む」のボタンを押すことにより、利用規約に同意したものとみなします
+        .actions
+          = f.submit "次へ進む" ,class: "regi-btn-red"
+        .signup-form__group
+          = link_to "本人情報の登録について>", "/", class: "text-right"
+= render 'devise/shared/footer_login'

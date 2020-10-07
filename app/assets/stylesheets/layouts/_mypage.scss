@@ -1,0 +1,255 @@
+.main {
+  margin: 24px auto 0;
+  display: flex;
+  justify-content: center;
+  background-color: #f5f5f5;
+  margin: map-get($m-margin, headerTop) auto 0;
+  width: 1020px;
+  @include media('tb') {
+    width: 100%;
+    display: block;
+  }
+}
+
+.mypage-side {
+  float: left;
+  width: map-get($m-width, side);
+  margin-right: map-get($m-margin, side);
+  color: #333;
+  z-index: 1;
+  @include media('tb') {
+    width: map-get($m-width, contents);
+    margin-top: map-get($m-margin, side);
+  }
+  @include media('sp') {
+    width: 100%;
+    margin-top: map-get($m-margin, side);
+  }
+  &--nav__list {
+    margin-bottom: 40px;
+    &__item {
+      border-top: 1px solid #eee;
+      position: relative;
+      display: block;
+      padding: 16px;
+      background-color: #fff;
+      font-size: 14px;
+      color: #333;
+      text-decoration: none;
+      &:hover {
+        background-color: #eee;
+        .fa {
+          color: #333;
+          transform: translateX(5px) translateY(-50%);
+          transition: 0.2s;
+        }
+      }
+      &.active {
+        background-color: #eee;
+        font-weight: 600;
+        .fa {
+          color: #333;
+        }
+      }
+      .fa {
+        position: absolute;
+        top: 50%;
+        right: 5%;
+        transform: translate(0, -50%);
+        color: #ccc;
+      }
+    }
+  }
+}
+.mypage-side--nav__head {
+  font-size: 16px;
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+.user {
+  float: right;
+  width: map-get($m-width, contents);
+  figure {
+    margin: 0 auto;
+  }
+  &__icon {
+    height: 160px;
+    position: relative;
+    padding: 20px;
+    background-image: image-url('user-bg.jpg');
+    background-size: cover;
+    text-align: center;
+    a {
+      text-decoration: none;
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translate(0, -50%);
+      color: #333;
+      text-align: center;
+      figure {
+        margin: 0 auto;
+        border-radius: 50%;
+        img {
+          width: 70px;
+          height: 70px;
+          vertical-align: middle;
+          border-radius: 90px;
+        }
+      }
+      h2 {
+        margin: 8px 0 0;
+        font-size: 14px;
+      }
+      .mypage-number {
+        margin: 15px 0 0;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .mypage__content {
+    margin: 0;
+    @include media('tb') {
+      width: map-get($m-width, contents);
+    }
+    .mypage__content--tabs {
+      border: 0;
+      background-color: #eee;
+      height: 74px;
+      display: flex;
+      .mypage__content--tab {
+        display: inline-block;
+        vertical-align: top;
+        text-align: center;
+        width: 50%;
+        border-width: 0;
+        height: 100%;
+        &.active {
+          background-color: #fff;
+          border-top: 2px solid #ea352d;
+        }
+        h3 {
+          font-size: 16px;
+          line-height: 72px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  li:not(.li-go):hover {
+    background-color: #eee;
+  }
+
+  .tab__content {
+    margin: 0;
+    padding: 0;
+    ul {
+      display: block;
+      background-color: #fff;
+    }
+    li {
+      height: 81px;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      .tab__content__item--link {
+        display: block;
+        height: 64px;
+        padding: 16px;
+        color: #333;
+        text-decoration: none;
+        figure {
+          float: left;
+          margin: 0;
+          img {
+            height: 48px;
+            width: 48px;
+          }
+        }
+        .tab__content__item--body {
+          height: 60px;
+          margin: 0 40px 0 68px;
+          p {
+            font-size: 16px;
+            color: #333;
+          }
+        }
+        i {
+          font-size: 20px;
+          position: absolute;
+          top: 50%;
+          right: 16px;
+          transform: translate(0, -50%);
+        }
+      }
+
+      .mypage-go {
+        padding: 10px;
+        &--list {
+          text-decoration: none;
+          display: block;
+          height: 56px;
+          margin: 0 auto;
+          background: #eee;
+          color: #333;
+          line-height: 56px;
+          text-align: center;
+        }
+      }
+    }
+  }
+  .mypage__buy {
+    margin: 40px 0 0;
+    background: #fff;
+    font-weight: bold;
+    &__head {
+      padding: 0 16px;
+      background: #fafafa;
+      font-size: 16px;
+      line-height: 72px;
+    }
+    &__tabs {
+      background: #eee;
+      display: flex;
+      li {
+        background: #eee;
+        width: 50%;
+        display: inline-block;
+        text-align: center;
+        vertical-align: top;
+        p {
+          position: relative;
+          display: block;
+          color: #333;
+          font-size: 16px;
+          line-height: 72px;
+        }
+        &.active {
+          background: #fff;
+          border-top: 2px solid #ea352d;
+        }
+      }
+    }
+    &__foot {
+      margin: 0;
+      padding: 0;
+      &--not-img {
+        padding: 160px 0 0;
+        background-image: image-url('logo_red.svg');
+        opacity: 0.1;
+        background-repeat: no-repeat;
+        background-position: center 40px;
+        background-size: 78px 85px;
+      }
+      &--not-found {
+        padding: 10px 0 60px;
+        text-align: center;
+        font-size: 16px;
+        color: #ccc;
+      }
+    }
+  }
+}

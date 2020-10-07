@@ -1,0 +1,42 @@
+= content_for(:html_title) { '出品した商品 - 売却済み - Fmarket' }
+.header
+  = render "shared/header"
+  = render 'shared/breadcrumb'
+%main.list-wrapper
+  .list-side
+    = render 'shared/mypage_side'
+  %section.list-contents
+    %h2.list-contents__index
+      出品した商品
+    %ul.list-contents__tabs
+      %li
+        %h3
+          =link_to list_users_path do
+            出品中
+      %li
+        %h3
+          =link_to '#' do
+            取引中
+      %li.active
+        %h3
+          =link_to complete_users_path do
+            売却済み
+    .list-contents__inner
+      %ul.list-contents__inner-items
+        - if @freemarkets.present?
+          - @freemarkets.each do |freemarket|
+            %li.list-contents__inner-item
+              =link_to '#', class:'inner-item' do
+                .inner-item__image
+                  = image_tag freemarket.item_images[0].image_url.url, size:'55x55'
+                .inner-item__namebox
+                  .inner-item__name
+                    =freemarket.item
+                  .inner-item__icon
+                    =icon('far', 'heart', class:'icon-like')
+                    =icon('far', 'comment-alt', class:'icon-comment')
+                .inner-item__chebron
+                  =icon('fas', 'chevron-right')
+        - else
+          %li.list-contents__inner-noitem
+            売却済みの商品がありません

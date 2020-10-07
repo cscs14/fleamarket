@@ -1,0 +1,22 @@
+=render 'regi_header_1'
+.redistration-main
+  .redistration-main__head
+    %h2
+      電話番号の確認
+  .redistration-main__form
+    = form_with model:@user, url: sign_in_address_path, builder: WithErrorFormBuilder, method: :get,local: true do |f|
+      .signup-form
+        .signup-form__group
+          %label 携帯電話の番号
+          = f.telephone_field :user_phone, placeholder:'携帯電話の番号を入力',pattern:'\d*', autofocus: true,value:"#{session[:user][":user_phone"]}"
+        .signup-form
+        .signup-form__group
+          %p
+            本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+        .actions
+          = f.submit "SMSを送信する" ,class: "regi-btn-red"
+        .signup-form__group
+          %p
+            ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+            -# = link_to  "電話番号の確認が必要な理由", '#'
+= render 'devise/shared/footer_login'

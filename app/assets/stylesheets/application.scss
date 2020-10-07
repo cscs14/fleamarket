@@ -1,0 +1,62 @@
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+@import 'config/reset';
+@import 'config/variable';
+@import 'mixins/mixin';
+@import 'mixins/media';
+@import 'modules/slider';
+@import 'modules/slick-theme';
+@import 'modules/sellbutton';
+@import 'modules/header';
+@import 'modules/breadcrumb';
+@import 'modules/footer';
+@import 'modules/footertop';
+@import 'modules/header_login';
+@import 'modules/footer_login';
+@import 'layouts/freemarket';
+@import 'layouts/ppc';
+@import 'layouts/show';
+@import 'layouts/create';
+@import 'layouts/mypage';
+@import 'layouts/logout';
+@import 'layouts/login';
+@import 'layouts/signup';
+@import 'layouts/identification';
+@import 'layouts/profile';
+@import 'layouts/card';
+@import 'modules/registration';
+@import 'modules/regi_header';
+@import 'layouts/item_new';
+@import 'layouts/categories';
+@import 'layouts/list';
+@import 'layouts/item_edit';
+@import 'layouts/purchased';
+
+body {
+  position: relative;
+  min-height: 100%;
+  background: #f5f5f5;
+  font-size: 14px;
+  color: #333;
+  line-height: 1;
+  overflow-x: hidden;
+}
+
+* {
+  font-family: 'Source Sans Pro', Helvetica, Arial, '游ゴシック体', 'YuGothic',
+    'メイリオ', 'Meiryo', sans-serif;
+  border-style: solid;
+  border-width: 0;
+  box-sizing: border-box;
+}
+
+.notifications {
+  color: white;
+  text-align: center;
+  .notice {
+    background-color: #6dc3e6;
+  }
+  .alert {
+    background-color: #ddac53;
+  }
+}

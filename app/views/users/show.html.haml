@@ -1,0 +1,61 @@
+- breadcrumb :show
+.mypage-main-container
+  =render "shared/header"
+  = render 'shared/breadcrumb'
+  %main.indentification
+    =render "shared/mypage_side"
+    .indentification-content
+      %section.indentification-content__mypage
+        %h2.indentification-content__head-top 本人情報の登録
+        = form_with model: @user, local: true, class: 'indentification-content__form' do |f|
+          %div
+            %p.indentification-content__info
+              お客さまの本人情報をご登録ください。
+              %br
+              登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+            %p.indentification-content__link
+              = link_to '本人確認書類のアップロードについて', " "
+              %i.fas.fa-chevron-right
+          .indentification-content__group
+            = f.label 'お名前'
+            %p
+              = current_user.last_name
+              = current_user.first_name
+          .indentification-content__group
+            = f.label 'お名前カナ'
+            %p
+              = current_user.last_name_kana
+              = current_user.first_name_kana
+          .indentification-content__group
+            = f.label '生年月日'
+            %p
+              = current_user.birthday
+          .indentification-content__group
+            = f.label '郵便番号', class: 'indentification-content__postcode'
+            %span.indentification-content__arbitrary 任意
+            = f.text_field :post_code1, { class: 'indentification-content__default', placeholder: '例）1234567', value: "" }
+          .indentification-content__group
+            = f.label '都道府県', class: 'indentification-content__prefecture'
+            %span.indentification-content__arbitrary 任意
+            .indentification-content__select
+              =icon('fas', 'chevron-down',class:"down-icon")
+              = f.collection_select :ship_from, Prefecture.all, :id, :name, {include_blank: '---'}, {class: 'pulldown'}
+            .indentification-content__group
+              = f.label '市区町村', class: 'indentification-content__postcode'
+              %span.indentification-content__arbitrary 任意
+              = f.text_field :city, { class: 'indentification-content__default', placeholder: '例）横浜市緑区', value: "" }
+            .indentification-content__group
+              = f.label '番地', class: 'indentification-content__postcode'
+              %span.indentification-content__arbitrary 任意
+              = f.text_field :address1, { class: 'indentification-content__default', placeholder: '例）青山1-1-1', value: "" }
+            .indentification-content__group
+              = f.label '建物名', class: 'indentification-content__postcode'
+              %span.indentification-content__arbitrary 任意
+              = f.text_field :address2, { class: 'indentification-content__default', placeholder: '例）柳ビル103', value: "" }
+              = f.submit '登録する', { class: 'indentification-content__button' }
+            %p.indentification-content__link
+              = link_to '本人情報の登録について', ''
+              %i.fas.fa-chevron-right
+      = render 'shared/sellbutton'
+= render partial: 'shared/footertop'
+= render partial: 'shared/footer'

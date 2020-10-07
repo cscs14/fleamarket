@@ -1,0 +1,36 @@
+= content_for(:html_title) { '購入した商品 - 過去の取引一覧 - Fmarket' }
+= render 'shared/header'
+= render 'shared/breadcrumb'
+%main.purchased
+  .container
+    %article.content
+      %h2.title 購入した商品
+      .tabs
+        %ul.tabs__title
+          %li
+            %h3
+              =link_to '#' do
+                取引中
+          %li.active
+            %h3
+              =link_to purchased_users_path do
+                過去の取引
+      %section.tabs__content
+        %ul.tabs__content--lists
+          - if @orders.present?
+            - @orders.each do |order|
+              %li.buy-list
+                =link_to '#', class:'buy-list__item' do
+                  = image_tag order.freemarket.item_images[0].image_url.url, class:'buy-list__item--img', size:'48x48'
+                  .buy-list__item--text
+                    %p= "「#{order.freemarket.item}」を購入しました。 取引が完了しました"
+                    %span 取引完了
+                  .buy-list__item--arrow
+          - else
+            .not-found--img
+            .not-found--text
+              %span 購入した商品がありません
+    %nav= render 'shared/mypage_side'
+%nav= render 'shared/sellbutton'
+%aside= render 'shared/footertop'
+%footer= render 'shared/footer'

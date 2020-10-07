@@ -1,0 +1,17 @@
+.signup
+  .signup__main
+    .signup__main--top
+      %h2 新規会員登録
+    .signup__main--form
+      = link_to sign_in_registrstion_path,method: :get  do
+        .btn-sns.btn-sns__mail
+          %i.fa.fa-envelope.icon--mail
+          = "メールアドレスで登録する"
+      = link_to user_facebook_omniauth_authorize_path, method: :post do
+        .btn-sns.btn-sns__facebook
+          =icon('fab', 'facebook',class:"icon--facebook")
+          = "Facebookで登録する"
+      = link_to user_google_oauth2_omniauth_authorize_path, method: :post do
+        .btn-sns.btn-sns__google
+          =icon('fab', 'google',class:"icon--google")
+          = "Googleで登録する"
